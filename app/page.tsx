@@ -1,11 +1,14 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import HeroIllustration from "@/components/illustrations/HeroIllustration";
+import CaseStudiesCarousel from "@/components/CaseStudiesCarousel";
 import {
   WebScene,
   MobileScene,
   SoftwareScene,
   EcommerceScene,
+  ChatbotScene,
+  VoiceAssistantScene,
 } from "@/components/illustrations/ServiceScenes";
 import {
   HtmlLogo,
@@ -59,6 +62,16 @@ const SERVICES = [
     Icon: EcommerceScene,
     title: "E-Ticaret",
     desc: "Dönüşüm odaklı, güvenli ve yönetimi kolay satış altyapıları.",
+  },
+  {
+    Icon: ChatbotScene,
+    title: "Chatbot",
+    desc: "Müşteri sorularını yanıtlayan, destek yükünü azaltan yapay zeka destekli chatbotlar.",
+  },
+  {
+    Icon: VoiceAssistantScene,
+    title: "Ses Asistanı",
+    desc: "Sesli komutları anlayan ve yanıtlayan yapay zeka destekli ses asistanları.",
   },
 ];
 
@@ -157,6 +170,19 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className={styles.caseStudiesHeader}>
+            <div>
+              <span className="eyebrow">Referanslar</span>
+              <h2>Vaka Çalışmaları</h2>
+            </div>
+            <Link href="/referanslar" className={`btnGhost ${styles.caseStudiesCta}`}>Tüm Referanslar →</Link>
+          </div>
+          <CaseStudiesCarousel />
         </div>
       </section>
 

@@ -16,18 +16,18 @@ export const metadata: Metadata = {
 
 const PROJECTS = [
   {
-    Scene: BoatTourScene,
-    title: "Çeşme Tekne Turu",
-    type: "Web",
-    desc: "Çeşme'de tekne turu rezervasyonları için hazırlanan tanıtım ve rezervasyon sitesi.",
-    url: "https://cesmetekneturu.net/",
-  },
-  {
     Scene: FitnessAppScene,
     title: "NetFitApp",
     type: "Mobil",
     desc: "Kullanıcıların antrenman programlarını takip edebildiği bir fitness uygulaması.",
     url: null,
+  },
+  {
+    Scene: BoatTourScene,
+    title: "Çeşme Tekne Turu",
+    type: "Web",
+    desc: "Çeşme'de tekne turu rezervasyonu ve online ödeme alınabilen bir tanıtım ve rezervasyon sitesi.",
+    url: "https://cesmetekneturu.net/",
   },
   {
     Scene: YachtScene,
@@ -40,14 +40,14 @@ const PROJECTS = [
     Scene: FerryScene,
     title: "Feribot Dünyası",
     type: "Web",
-    desc: "Feribot bilet arama ve rezervasyon hizmeti sunan bir platform.",
+    desc: "Feribot bilet arama, rezervasyon ve online ödeme alınabilen bir platform.",
     url: "https://feribotdunyasi.com/",
   },
   {
     Scene: StudioScene,
     title: "Bora Avcı Stüdyo",
     type: "Web",
-    desc: "Bora Avcı için hazırlanan stüdyo tanıtım ve portföy sitesi.",
+    desc: "DJ ve prodüksiyon stüdyosu için hazırlanan tanıtım ve portföy sitesi.",
     url: null,
   },
 ];
