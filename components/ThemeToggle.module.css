@@ -1,0 +1,39 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: var(--c-inverse-text-muted, var(--c-text-muted));
+}
+
+.icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.track {
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  background-color: var(--c-primary);
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: transform 0.2s ease;
+}
+
+:global(body.dark) .thumb {
+  transform: translateX(18px);
+}

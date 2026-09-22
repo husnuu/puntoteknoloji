@@ -1,0 +1,104 @@
+.intro {
+  padding: 4.5rem 0 1rem;
+}
+
+.introInner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.introInner h1 {
+  font-size: clamp(2rem, 3.6vw, 2.7rem);
+}
+
+.lead {
+  font-style: italic;
+  color: var(--c-text);
+  font-size: 1.05rem;
+}
+
+.introIllustration {
+  width: 100%;
+  height: auto;
+}
+
+.howGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-top: 1rem;
+}
+
+.howCard {
+  text-align: left;
+}
+
+.howIllustration {
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 1.25rem;
+}
+
+.howCard h3 {
+  font-size: 1.15rem;
+}
+
+.sectionHeading {
+  text-align: center;
+  max-width: 38rem;
+  margin: 0 auto 3rem;
+}
+
+.sectionHeading h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  margin-bottom: 0.75rem;
+}
+
+.principleList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 1.5rem;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.principleItem {
+  text-align: center;
+}
+
+.principleIllustration {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.principleItem h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+
+.principleItem p {
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .introInner,
+  .howGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .principleList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .principleList {
+    grid-template-columns: 1fr;
+  }
+}

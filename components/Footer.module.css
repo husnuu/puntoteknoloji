@@ -1,0 +1,135 @@
+.footerWrap {
+  padding: 1.5rem 2rem 2.5rem;
+}
+
+.card {
+  max-width: 96rem;
+  margin: 0 auto;
+  background-color: var(--c-inverse-background);
+  color: var(--c-inverse-text-muted);
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+.ctaBlock {
+  padding: 6rem 1.5rem 3.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.ctaEyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-inverse-text-muted);
+  margin-bottom: -0.75rem;
+}
+
+.ctaText {
+  font-family: var(--font-lora), serif;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  color: var(--c-inverse-text);
+  max-width: 34rem;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.ctaButton {
+  font-size: 1.02rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, minmax(0, 1fr));
+  gap: 2.5rem;
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.themeRow {
+  display: flex;
+  align-items: flex-start;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.colTitle {
+  font-family: var(--font-inter), sans-serif;
+  color: var(--c-inverse-text);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+}
+
+.link {
+  font-size: 0.92rem;
+  color: var(--c-inverse-text-muted);
+}
+
+.link:hover {
+  color: var(--c-inverse-text);
+}
+
+.legal {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.5rem 1.5rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  font-size: 0.78rem;
+}
+
+.copyright {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.legalLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.legalLink {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.legalLink:hover {
+  color: var(--c-inverse-text);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .themeRow {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    border-radius: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

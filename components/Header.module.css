@@ -1,0 +1,132 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  background: var(--c-header-background);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0.01em;
+  color: var(--c-text);
+  white-space: nowrap;
+}
+
+.logoMark {
+  flex: none;
+}
+
+.logoAccent {
+  color: var(--c-primary);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2.1rem;
+  margin: 0 auto;
+}
+
+.navLink {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--c-text-muted);
+  -webkit-text-fill-color: initial;
+  padding: 0.4rem 0;
+  position: relative;
+}
+
+.navLink:hover {
+  color: var(--c-text);
+}
+
+.navLinkActive {
+  color: var(--c-primary);
+}
+
+.mobileCtaWrap {
+  display: none;
+}
+
+.desktopCtaWrap {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.menuButton {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+
+.menuBar {
+  width: 22px;
+  height: 2px;
+  background-color: var(--c-text);
+  border-radius: 2px;
+}
+
+@media (max-width: 860px) {
+  .nav {
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background-color: var(--c-background);
+    border-bottom: 1px solid var(--c-border);
+    padding: 0.5rem 1.5rem 1.25rem;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .navOpen {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navLink {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .mobileCtaWrap {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .desktopCtaWrap {
+    display: none;
+  }
+
+  .menuButton {
+    display: flex;
+  }
+}

@@ -1,0 +1,42 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background-color: var(--c-background);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.field input,
+.field textarea {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.98rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--c-border);
+  background-color: var(--c-surface);
+  color: var(--c-text);
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 1px;
+}
+
+.hint {
+  font-size: 0.8rem;
+  margin: 0;
+  color: var(--c-text-muted);
+}
