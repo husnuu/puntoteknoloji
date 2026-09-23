@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
-import TechPill from "@/components/TechPill";
+import { SearchIcon, CodeIcon, RocketIcon } from "@/components/illustrations/LineIcons";
 import { REFERENCES, getReferenceBySlug } from "@/lib/references";
 
 export function generateStaticParams() {
@@ -40,9 +40,18 @@ export default async function ReferenceDetailPage({
         <p className={styles.breadcrumb}>
           <Link href="/referanslar">Referanslar</Link> / {reference.title}
         </p>
-        <span className={styles.badge}>{reference.category} · {reference.type}</span>
+
+        <div className={styles.metaRow}>
+          <span className={styles.badge}>{reference.category} · {reference.type}</span>
+          <span className={styles.status}>
+            <span className={styles.statusDot} />
+            {reference.status}
+          </span>
+        </div>
+
         <h1>{reference.title}</h1>
         <p className={styles.lead}>{reference.desc}</p>
+
         <div className={styles.heroActions}>
           {reference.url && (
             <a className="btnPrimary" href={reference.url} target="_blank" rel="noopener noreferrer">
@@ -51,33 +60,88 @@ export default async function ReferenceDetailPage({
           )}
           <Link href="/proje-baslat" className="btnGhost">Benzer Bir Proje Başlat</Link>
         </div>
+      </section>
 
+      <section className="container">
         <div className={styles.imageWrap}>
           <reference.Scene className={styles.image} />
         </div>
-      </section>
 
-      <section className="container section">
-        <div className={styles.body}>
-          <div className={styles.bodyCard}>
-            <h2>Zorluk</h2>
-            <p>{reference.challenge}</p>
-          </div>
-          <div className={styles.bodyCard}>
-            <h2>Çözüm</h2>
-            <p>{reference.solution}</p>
-          </div>
-        </div>
-      </section>
+        <div className={styles.layout}>
+          <div>
+            <div className={styles.narrative}>
+              <div className={styles.narrativeItem}>
+                <span className={styles.narrativeIcon}><SearchIcon /></span>
+                <div>
+                  <h2>Zorluk</h2>
+                  <p>{reference.challenge}</p>
+                </div>
+              </div>
+              <div className={styles.narrativeItem}>
+                <span className={styles.narrativeIcon}><CodeIcon /></span>
+                <div>
+                  <h2>Çözüm</h2>
+                  <p>{reference.solution}</p>
+                </div>
+              </div>
+              <div className={styles.narrativeItem}>
+                <span className={styles.narrativeIcon}><RocketIcon /></span>
+                <div>
+                  <h2>Sonuç</h2>
+                  <p>{reference.outcome}</p>
+                </div>
+              </div>
+            </div>
 
-      <section className="section" style={{ backgroundColor: "var(--c-secondary)" }}>
-        <div className="container">
-          <h2>Kullanılan Teknolojiler</h2>
-          <div className={styles.techRow}>
-            {reference.technologies.map((t) => (
-              <TechPill key={t.label} label={t.label} Logo={t.Logo} />
-            ))}
+            <h2 className={styles.highlightsTitle}>Öne Çıkan Özellikler</h2>
+            <ul className={styles.highlightGrid}>
+              {reference.highlights.map((h) => (
+                <li key={h}>
+                  <span className={styles.checkIcon}>✓</span>
+                  {h}
+                </li>
+              ))}
+            </ul>
           </div>
+
+          <aside className={styles.sidebar}>
+            <div className={styles.infoCard}>
+              <h3>Proje Bilgileri</h3>
+              <div className={styles.infoList}>
+                <div className={styles.infoRow}>
+                  <span className={styles.infoLabel}>Sektör</span>
+                  <span className={styles.infoValue}>{reference.category}</span>
+                </div>
+                <div className={styles.infoRow}>
+                  <span className={styles.infoLabel}>Proje Türü</span>
+                  <span className={styles.infoValue}>{reference.type}</span>
+                </div>
+                {reference.year && (
+                  <div className={styles.infoRow}>
+                    <span className={styles.infoLabel}>Yıl</span>
+                    <span className={styles.infoValue}>{reference.year}</span>
+                  </div>
+                )}
+                <div className={styles.infoRow}>
+                  <span className={styles.infoLabel}>Durum</span>
+                  <span className={styles.infoValue}>{reference.status}</span>
+                </div>
+              </div>
+              <div className={styles.infoRow}>
+                <span className={styles.infoLabel}>Teknolojiler</span>
+              </div>
+              <div className={styles.techTags} style={{ marginTop: "0.5rem" }}>
+                {reference.technologies.map((t) => (
+                  <span key={t.label} className={styles.techTag}>{t.label}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.ctaCard}>
+              <p>Böyle bir projeniz mi var?</p>
+              <Link href="/proje-baslat" className="btnPrimary">Projeye Başla</Link>
+            </div>
+          </aside>
         </div>
       </section>
 

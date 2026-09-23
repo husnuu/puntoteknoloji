@@ -24,7 +24,7 @@ export default function ReferencesPage() {
               <div className={styles.cardHead}>
                 <p.Scene className={styles.cardHeadImage} />
               </div>
-              <span className={styles.badge}>{p.type}</span>
+              <span className={styles.badge}>{p.category} · {p.type}{p.year ? ` · ${p.year}` : ""}</span>
               <h3>{p.title}</h3>
               <p>{p.desc}</p>
               <span className={styles.link}>Vaka Çalışmasını Gör →</span>
