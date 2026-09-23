@@ -1,0 +1,72 @@
+.intro {
+  padding-top: 4.5rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.intro h1 {
+  font-size: clamp(2rem, 3.6vw, 2.7rem);
+}
+
+.list {
+  max-width: 46rem;
+  margin: 2.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.item {
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  padding: 0.25rem 1.5rem;
+  background-color: var(--c-background);
+}
+
+.item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.15rem 0;
+  font-family: var(--font-lora), serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--c-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.item summary::-webkit-details-marker {
+  display: none;
+}
+
+.marker {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--c-primary);
+  transition: transform 0.15s ease;
+}
+
+.item[open] .marker {
+  transform: rotate(45deg);
+}
+
+.item p {
+  margin: 0 0 1.25rem;
+  font-size: 0.96rem;
+}
+
+.ctaRow {
+  text-align: center;
+  margin-top: 3.5rem;
+}

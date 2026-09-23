@@ -31,16 +31,17 @@ export default function Footer() {
 
           <div className={styles.col}>
             <h3 className={styles.colTitle}>Hizmetler</h3>
-            <Link href="/hizmetler" className={styles.link}>Web Sitesi</Link>
-            <Link href="/hizmetler" className={styles.link}>Mobil Uygulama</Link>
-            <Link href="/hizmetler" className={styles.link}>Özel Yazılım</Link>
-            <Link href="/hizmetler" className={styles.link}>E-Ticaret</Link>
+            <Link href="/hizmetler/web-sitesi" className={styles.link}>Web Sitesi</Link>
+            <Link href="/hizmetler/mobil-uygulama" className={styles.link}>Mobil Uygulama</Link>
+            <Link href="/hizmetler/ozel-yazilim" className={styles.link}>Özel Yazılım</Link>
+            <Link href="/hizmetler/e-ticaret" className={styles.link}>E-Ticaret</Link>
           </div>
 
           <div className={styles.col}>
             <h3 className={styles.colTitle}>Başla</h3>
             <Link href="/proje-baslat" className={styles.link}>Projeye Başla</Link>
             <Link href="/iletisim" className={styles.link}>İletişim</Link>
+            <Link href="/sss" className={styles.link}>SSS</Link>
           </div>
         </div>
 

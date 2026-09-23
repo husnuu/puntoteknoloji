@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import HeroIllustration from "@/components/illustrations/HeroIllustration";
 import CaseStudiesCarousel from "@/components/CaseStudiesCarousel";
 import { SERVICES } from "@/lib/services";
+import { FAQ } from "@/lib/faq";
 import {
   HtmlLogo,
   CssLogo,
@@ -201,6 +202,29 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className={`${styles.altBg} section`}>
+        <div className="container">
+          <div className={styles.sectionHeading}>
+            <span className="eyebrow">SSS</span>
+            <h2>Aklınıza Takılanlar</h2>
+          </div>
+          <div className={styles.faqList}>
+            {FAQ.slice(0, 4).map((item) => (
+              <details key={item.q} className={styles.faqItem}>
+                <summary>
+                  {item.q}
+                  <span className={styles.faqMarker}>+</span>
+                </summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
+          </div>
+          <div className={styles.ctaRow}>
+            <Link href="/sss" className="btnGhost">Tüm Soruları Gör →</Link>
+          </div>
         </div>
       </section>
     </>
