@@ -2,7 +2,10 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import HeroIllustration from "@/components/illustrations/HeroIllustration";
 import CaseStudiesCarousel from "@/components/CaseStudiesCarousel";
+import Reveal from "@/components/Reveal";
+import StatsCounter from "@/components/StatsCounter";
 import { SERVICES } from "@/lib/services";
+import { REFERENCES } from "@/lib/references";
 import { FAQ } from "@/lib/faq";
 import {
   HtmlLogo,
@@ -91,10 +94,20 @@ const PRINCIPLES = [
   { Icon: MaintainableScene, title: "Bakımı kolay çözümler" },
 ];
 
+const TECH_COUNT = STACK_GROUPS.reduce((sum, group) => sum + group.logos.length, 0);
+
+const STATS = [
+  { value: REFERENCES.length, suffix: "+", label: "Teslim Edilen Proje" },
+  { value: SERVICES.length, label: "Hizmet Alanı" },
+  { value: TECH_COUNT, suffix: "+", label: "Kullanılan Teknoloji" },
+];
+
 export default function Home() {
   return (
     <>
       <section className={`container ${styles.hero}`}>
+        <span className={`${styles.heroBlob} ${styles.heroBlob1}`} aria-hidden="true" />
+        <span className={`${styles.heroBlob} ${styles.heroBlob2}`} aria-hidden="true" />
         <div className={styles.heroInner}>
           <div>
             <span className="eyebrow">İstanbul Merkezli Yazılım Şirketi</span>
@@ -115,21 +128,29 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="container">
+        <Reveal>
+          <StatsCounter stats={STATS} />
+        </Reveal>
+      </section>
+
       <section className={`${styles.altBg} section`}>
         <div className="container">
-          <div className={styles.sectionHeading}>
+          <Reveal className={styles.sectionHeading}>
             <span className="eyebrow">Neler Yapıyoruz</span>
             <h2>Fikrinizi çalışan bir ürüne dönüştürüyoruz</h2>
             <p>İster küçük bir tanıtım sitesi, ister uçtan uca bir platform olsun — ihtiyacına uygun çözümü birlikte kuruyoruz.</p>
-          </div>
+          </Reveal>
           <div className={styles.serviceGrid}>
-            {SERVICES.map(({ slug, title, shortDesc, Scene }) => (
-              <Link key={slug} href={`/hizmetler/${slug}`} className={styles.serviceCard}>
-                <Scene className={styles.serviceIcon} />
-                <h3>{title}</h3>
-                <p>{shortDesc}</p>
-                <span className={styles.serviceLink}>Detayları Gör →</span>
-              </Link>
+            {SERVICES.map(({ slug, title, shortDesc, Scene }, i) => (
+              <Reveal key={slug} delay={i * 70}>
+                <Link href={`/hizmetler/${slug}`} className={styles.serviceCard}>
+                  <Scene className={styles.serviceIcon} />
+                  <h3>{title}</h3>
+                  <p>{shortDesc}</p>
+                  <span className={styles.serviceLink}>Detayları Gör →</span>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -137,32 +158,36 @@ export default function Home() {
 
       <section className="section">
         <div className="container">
-          <div className={styles.caseStudiesHeader}>
+          <Reveal className={styles.caseStudiesHeader}>
             <div>
               <span className="eyebrow">Referanslar</span>
               <h2>Vaka Çalışmaları</h2>
             </div>
             <Link href="/referanslar" className={`btnGhost ${styles.caseStudiesCta}`}>Tüm Referanslar →</Link>
-          </div>
-          <CaseStudiesCarousel />
+          </Reveal>
+          <Reveal delay={100}>
+            <CaseStudiesCarousel />
+          </Reveal>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <div className={styles.sectionHeading}>
+          <Reveal className={styles.sectionHeading}>
             <span className="eyebrow">Süreç</span>
             <h2>Keşiften teslime, dört net aşama</h2>
             <p>Her proje aynı disiplinle ilerler: netlik, sade tasarım, temiz kod ve zamanında teslim.</p>
-          </div>
+          </Reveal>
           <div className={styles.processGrid}>
             {PROCESS.map((step, i) => (
-              <div key={step.title} className={styles.processStep}>
-                <span className={styles.processNumber}>{String(i + 1).padStart(2, "0")}</span>
-                <step.Icon className={styles.processIcon} />
-                <h3>{step.title}</h3>
-                <p>{step.desc}</p>
-              </div>
+              <Reveal key={step.title} delay={i * 80}>
+                <div className={styles.processStep}>
+                  <span className={styles.processNumber}>{String(i + 1).padStart(2, "0")}</span>
+                  <step.Icon className={styles.processIcon} />
+                  <h3>{step.title}</h3>
+                  <p>{step.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -170,16 +195,18 @@ export default function Home() {
 
       <section className={`${styles.altBg} section`}>
         <div className="container">
-          <div className={styles.sectionHeading}>
+          <Reveal className={styles.sectionHeading}>
             <span className="eyebrow">Stüdyo Prensipleri</span>
             <h2>Neden Punto Teknoloji</h2>
-          </div>
+          </Reveal>
           <div className={styles.principleGrid}>
-            {PRINCIPLES.map((p) => (
-              <div key={p.title} className={styles.principleCard}>
-                <p.Icon className={styles.principleIcon} />
-                <h3>{p.title}</h3>
-              </div>
+            {PRINCIPLES.map((p, i) => (
+              <Reveal key={p.title} delay={i * 70}>
+                <div className={styles.principleCard}>
+                  <p.Icon className={styles.principleIcon} />
+                  <h3>{p.title}</h3>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -187,31 +214,31 @@ export default function Home() {
 
       <section className="section">
         <div className="container">
-          <div className={styles.sectionHeading}>
+          <Reveal className={styles.sectionHeading}>
             <span className="eyebrow">Modern Teknoloji</span>
             <h2>Performans için doğru araçlar</h2>
             <p>Her proje farklıdır; işe en uygun teknolojiyi seçerek güvenilir ve ölçeklenebilir sonuçlar üretiyoruz.</p>
-          </div>
-          {STACK_GROUPS.map((group) => (
-            <div key={group.label} className={styles.stackGroup}>
+          </Reveal>
+          {STACK_GROUPS.map((group, i) => (
+            <Reveal key={group.label} delay={i * 90} className={styles.stackGroup}>
               <span className={styles.stackLabel}>{group.label}</span>
               <div className={styles.stackRow}>
                 {group.logos.map(({ Logo, label }) => (
                   <Logo key={label} className={styles.stackLogo} />
                 ))}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className={`${styles.altBg} section`}>
         <div className="container">
-          <div className={styles.sectionHeading}>
+          <Reveal className={styles.sectionHeading}>
             <span className="eyebrow">SSS</span>
             <h2>Aklınıza Takılanlar</h2>
-          </div>
-          <div className={styles.faqList}>
+          </Reveal>
+          <Reveal className={styles.faqList}>
             {FAQ.slice(0, 4).map((item) => (
               <details key={item.q} className={styles.faqItem}>
                 <summary>
@@ -221,7 +248,7 @@ export default function Home() {
                 <p>{item.a}</p>
               </details>
             ))}
-          </div>
+          </Reveal>
           <div className={styles.ctaRow}>
             <Link href="/sss" className="btnGhost">Tüm Soruları Gör →</Link>
           </div>

@@ -3,10 +3,10 @@
 import Link from "next/link";
 import styles from "./CookieBanner.module.css";
 
-function acceptCookies() {
+function setConsent(value: "accepted" | "rejected") {
   document.body.classList.remove("show-cookie-banner");
   try {
-    localStorage.setItem("punto-cookie-consent", "accepted");
+    localStorage.setItem("punto-cookie-consent", value);
   } catch {}
 }
 
@@ -19,9 +19,14 @@ export default function CookieBanner() {
         <Link href="/cerez-politikasi">Çerez Politikamıza</Link> göz
         atabilirsiniz.
       </p>
-      <button type="button" className={`btnPrimary ${styles.button}`} onClick={acceptCookies}>
-        Anladım
-      </button>
+      <div className={styles.actions}>
+        <button type="button" className={styles.reject} onClick={() => setConsent("rejected")}>
+          Reddet
+        </button>
+        <button type="button" className={`btnPrimary ${styles.button}`} onClick={() => setConsent("accepted")}>
+          Kabul Et
+        </button>
+      </div>
     </div>
   );
 }

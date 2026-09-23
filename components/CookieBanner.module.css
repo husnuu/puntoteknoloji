@@ -41,10 +41,32 @@
   text-decoration: underline;
 }
 
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
 .button {
-  align-self: flex-end;
   font-size: 0.92rem;
   padding: 0.65rem 1.4rem;
+}
+
+.reject {
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.65rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--c-border);
+  background: none;
+  color: var(--c-text-muted);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.reject:hover {
+  border-color: var(--c-text);
+  color: var(--c-text);
 }
 
 @media (max-width: 480px) {
@@ -55,7 +77,12 @@
     padding: 1.25rem;
   }
 
+  .actions {
+    flex-direction: column-reverse;
+  }
+
+  .reject,
   .button {
-    align-self: stretch;
+    width: 100%;
   }
 }
