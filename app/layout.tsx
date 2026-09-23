@@ -3,6 +3,7 @@ import { Lora, Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollTopButton from "@/components/ScrollTopButton";
+import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
 const lora = Lora({
@@ -31,6 +32,11 @@ const themeInitScript = `
     document.body.classList.remove('light', 'dark');
     document.body.classList.add(theme);
   } catch (e) {}
+  try {
+    if (!localStorage.getItem('punto-cookie-consent')) {
+      document.body.classList.add('show-cookie-banner');
+    }
+  } catch (e) {}
 })();
 `;
 
@@ -41,12 +47,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" className={`${lora.variable} ${interTight.variable}`}>
-      <body className="light">
+      <body className="light" suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <Header />
         <main>{children}</main>
         <Footer />
         <ScrollTopButton />
+        <CookieBanner />
       </body>
     </html>
   );

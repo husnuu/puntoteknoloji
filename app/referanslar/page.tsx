@@ -20,7 +20,7 @@ const PROJECTS = [
     title: "NetFitApp",
     type: "Mobil",
     desc: "Kullanıcıların antrenman programlarını takip edebildiği bir fitness uygulaması.",
-    url: null,
+    url: "https://netfitapp.com/",
   },
   {
     Scene: BoatTourScene,
@@ -48,7 +48,7 @@ const PROJECTS = [
     title: "Bora Avcı Stüdyo",
     type: "Web",
     desc: "DJ ve prodüksiyon stüdyosu için hazırlanan tanıtım ve portföy sitesi.",
-    url: null,
+    url: "https://www.boraavci.com/",
   },
 ];
 

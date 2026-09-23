@@ -17,7 +17,7 @@ const CASE_STUDIES = [
     category: "Sağlık & Fitness",
     title: "Kullanıcıların antrenmanlarını takip ettiği bir fitness uygulaması",
     desc: "Fikir aşamasından mağaza yayınına kadar süreci uçtan uca yönettiğimiz bir mobil uygulama.",
-    url: null,
+    url: "https://netfitapp.com/",
   },
   {
     Scene: BoatTourScene,
@@ -45,7 +45,7 @@ const CASE_STUDIES = [
     category: "Yaratıcı Endüstri",
     title: "Bir DJ & prodüksiyon stüdyosunun işini en iyi anlatan portföy sitesi",
     desc: "Çalışmalarının öne çıktığı, sade ve etkileyici bir tanıtım sitesi kurduk.",
-    url: null,
+    url: "https://www.boraavci.com/",
   },
 ];
 

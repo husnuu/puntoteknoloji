@@ -67,6 +67,7 @@ body {
   font-size: 16px;
   line-height: 1.55;
   transition: background-color 0.2s ease, color 0.2s ease;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
@@ -106,8 +107,15 @@ button {
   padding: 0 1.5rem;
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
 .section {
-  padding: 5.5rem 0;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 
 .eyebrow {
@@ -178,6 +186,7 @@ button {
 
 @media (max-width: 640px) {
   .section {
-    padding: 3.25rem 0;
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
   }
 }

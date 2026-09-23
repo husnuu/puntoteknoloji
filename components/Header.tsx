@@ -37,18 +37,7 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <span className={styles.mobileCtaWrap}>
-            <Link href="/proje-baslat" className="btnPrimary" onClick={() => setOpen(false)}>
-              Projeye Başla
-            </Link>
-          </span>
         </nav>
-
-        <span className={styles.desktopCtaWrap}>
-          <Link href="/proje-baslat" className="btnPrimary">
-            Projeye Başla
-          </Link>
-        </span>
 
         <button
           type="button"

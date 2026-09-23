@@ -1,5 +1,6 @@
 .hero {
-  padding: 4.5rem 0 5rem;
+  padding-top: 4.5rem;
+  padding-bottom: 5rem;
 }
 
 .heroInner {
@@ -97,6 +98,9 @@
 
 .serviceCard {
   composes: card;
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .serviceIcon {
@@ -113,7 +117,13 @@
 
 .serviceCard p {
   font-size: 0.94rem;
-  margin: 0;
+  margin: 0 0 0.75rem;
+}
+
+.serviceLink {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--c-primary);
 }
 
 .processGrid {
@@ -234,6 +244,39 @@
 
   .principleGrid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 2.25rem;
+    padding-bottom: 3rem;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .heroActions > a {
+    text-align: center;
+  }
+
+  .stackRow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: center;
+    gap: 1.75rem 1rem;
+  }
+
+  .stackLogo {
+    height: 32px;
+  }
+
+  .card {
+    padding: 1.5rem;
+    border-color: var(--c-border);
+    background-color: var(--c-background);
   }
 }
 

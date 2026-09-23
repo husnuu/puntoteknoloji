@@ -2,14 +2,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import HeroIllustration from "@/components/illustrations/HeroIllustration";
 import CaseStudiesCarousel from "@/components/CaseStudiesCarousel";
-import {
-  WebScene,
-  MobileScene,
-  SoftwareScene,
-  EcommerceScene,
-  ChatbotScene,
-  VoiceAssistantScene,
-} from "@/components/illustrations/ServiceScenes";
+import { SERVICES } from "@/lib/services";
 import {
   HtmlLogo,
   CssLogo,
@@ -41,39 +34,6 @@ import {
   AestheticScene,
   MaintainableScene,
 } from "@/components/illustrations/PrincipleScenes";
-
-const SERVICES = [
-  {
-    Icon: WebScene,
-    title: "Web Sitesi",
-    desc: "Performans odaklı, SEO dostu ve hızlı yüklenen kurumsal ve tanıtım siteleri.",
-  },
-  {
-    Icon: MobileScene,
-    title: "Mobil Uygulama",
-    desc: "iOS ve Android için akıcı, kullanıcı dostu native ve hibrit uygulamalar.",
-  },
-  {
-    Icon: SoftwareScene,
-    title: "Özel Yazılım",
-    desc: "İş süreçlerinize özel olarak tasarlanmış, ölçeklenebilir yazılım çözümleri.",
-  },
-  {
-    Icon: EcommerceScene,
-    title: "E-Ticaret",
-    desc: "Dönüşüm odaklı, güvenli ve yönetimi kolay satış altyapıları.",
-  },
-  {
-    Icon: ChatbotScene,
-    title: "Chatbot",
-    desc: "Müşteri sorularını yanıtlayan, destek yükünü azaltan yapay zeka destekli chatbotlar.",
-  },
-  {
-    Icon: VoiceAssistantScene,
-    title: "Ses Asistanı",
-    desc: "Sesli komutları anlayan ve yanıtlayan yapay zeka destekli ses asistanları.",
-  },
-];
 
 const STACK_GROUPS = [
   {
@@ -162,12 +122,13 @@ export default function Home() {
             <p>İster küçük bir tanıtım sitesi, ister uçtan uca bir platform olsun — ihtiyacına uygun çözümü birlikte kuruyoruz.</p>
           </div>
           <div className={styles.serviceGrid}>
-            {SERVICES.map(({ Icon, title, desc }) => (
-              <div key={title} className={styles.serviceCard}>
-                <Icon className={styles.serviceIcon} />
+            {SERVICES.map(({ slug, title, shortDesc, Scene }) => (
+              <Link key={slug} href={`/hizmetler/${slug}`} className={styles.serviceCard}>
+                <Scene className={styles.serviceIcon} />
                 <h3>{title}</h3>
-                <p>{desc}</p>
-              </div>
+                <p>{shortDesc}</p>
+                <span className={styles.serviceLink}>Detayları Gör →</span>
+              </Link>
             ))}
           </div>
         </div>
