@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./page.module.css";
+import Reveal from "@/components/Reveal";
+import StatsCounter from "@/components/StatsCounter";
+import { STATS } from "@/lib/stats";
 import {
   AboutHeroIllustration,
   CollaborationIllustration,
@@ -61,25 +64,35 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="container">
+        <Reveal>
+          <StatsCounter stats={STATS} />
+        </Reveal>
+      </section>
+
       <section className="section">
         <div className="container">
           <div className={styles.howGrid}>
-            <div className={styles.howCard}>
-              <CollaborationIllustration className={styles.howIllustration} />
-              <h3>Doğrudan ekiple çalışırsınız</h3>
-              <p>
-                Aracı yok. Sisteminizi kuran ekiple doğrudan konuşursunuz —
-                daha hızlı kararlar, daha net iletişim.
-              </p>
-            </div>
-            <div className={styles.howCard}>
-              <BuildIllustration className={styles.howIllustration} />
-              <h3>Gerçek kullanım için inşa edilir</h3>
-              <p>
-                İnsanların gerçekten kullandığı sistemler kurarız — güvenilir,
-                sürdürülebilir ve işinize göre tasarlanmış.
-              </p>
-            </div>
+            <Reveal>
+              <div className={styles.howCard}>
+                <CollaborationIllustration className={styles.howIllustration} />
+                <h3>Doğrudan ekiple çalışırsınız</h3>
+                <p>
+                  Aracı yok. Sisteminizi kuran ekiple doğrudan konuşursunuz —
+                  daha hızlı kararlar, daha net iletişim.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={80}>
+              <div className={styles.howCard}>
+                <BuildIllustration className={styles.howIllustration} />
+                <h3>Gerçek kullanım için inşa edilir</h3>
+                <p>
+                  İnsanların gerçekten kullandığı sistemler kurarız — güvenilir,
+                  sürdürülebilir ve işinize göre tasarlanmış.
+                </p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -95,12 +108,14 @@ export default function AboutPage() {
             </p>
           </div>
           <div className={styles.principleList}>
-            {PRINCIPLES.map((p) => (
-              <div key={p.title} className={styles.principleItem}>
-                <p.Icon className={styles.principleIllustration} />
-                <h3>{p.title}</h3>
-                <p>{p.desc}</p>
-              </div>
+            {PRINCIPLES.map((p, i) => (
+              <Reveal key={p.title} delay={i * 70}>
+                <div className={styles.principleItem}>
+                  <p.Icon className={styles.principleIllustration} />
+                  <h3>{p.title}</h3>
+                  <p>{p.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>

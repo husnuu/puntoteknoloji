@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./page.module.css";
+import Reveal from "@/components/Reveal";
+import { PROCESS } from "@/lib/process";
 import {
   WebIcon,
   MobileIcon,
@@ -101,23 +103,49 @@ export default function ServicesPage() {
 
       <section className="container section">
         <div className={styles.list}>
-          {SERVICES.map(({ Icon, title, desc, features }) => (
-            <div key={title} className={styles.row}>
-              <Icon className={styles.icon} />
-              <div>
-                <h2>{title}</h2>
-                <p>{desc}</p>
-                <ul className={styles.features}>
-                  {features.map((f) => (
-                    <li key={f}>{f}</li>
-                  ))}
-                </ul>
+          {SERVICES.map(({ Icon, title, desc, features }, i) => (
+            <Reveal key={title} delay={i * 60}>
+              <div className={styles.row}>
+                <Icon className={styles.icon} />
+                <div>
+                  <h2>{title}</h2>
+                  <p>{desc}</p>
+                  <ul className={styles.features}>
+                    {features.map((f) => (
+                      <li key={f}>{f}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
+      </section>
 
-        <div className={styles.ctaRow}>
+      <section className="section" style={{ backgroundColor: "var(--c-secondary)" }}>
+        <div className="container">
+          <Reveal className={styles.sectionHeading}>
+            <span className="eyebrow">Süreç</span>
+            <h2>Nasıl çalışıyoruz</h2>
+            <p>Hangi hizmeti seçersen seç, her proje aynı dört aşamadan geçer.</p>
+          </Reveal>
+          <div className={styles.processGrid}>
+            {PROCESS.map((step, i) => (
+              <Reveal key={step.title} delay={i * 80}>
+                <div className={styles.processStep}>
+                  <span className={styles.processNumber}>{String(i + 1).padStart(2, "0")}</span>
+                  <step.Icon className={styles.processIcon} />
+                  <h3>{step.title}</h3>
+                  <p>{step.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="container section">
+        <div className={styles.ctaRow} style={{ marginTop: 0 }}>
           <Link href="/proje-baslat" className="btnPrimary">Projeni Anlat</Link>
         </div>
       </section>

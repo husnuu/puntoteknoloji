@@ -5,32 +5,10 @@ import CaseStudiesCarousel from "@/components/CaseStudiesCarousel";
 import Reveal from "@/components/Reveal";
 import StatsCounter from "@/components/StatsCounter";
 import { SERVICES } from "@/lib/services";
-import { REFERENCES } from "@/lib/references";
 import { FAQ } from "@/lib/faq";
-import {
-  HtmlLogo,
-  CssLogo,
-  JsLogo,
-  ReactLogo,
-  AngularLogo,
-  VueLogo,
-  NextjsLogo,
-  NodeLogo,
-  SanityLogo,
-  ContentfulLogo,
-  StoryblokLogo,
-  CloudflareLogo,
-  VercelLogo,
-  NetlifyLogo,
-  FirebaseLogo,
-  AwsLogo,
-} from "@/components/illustrations/TechLogos";
-import {
-  DiscoveryScene,
-  DesignScene,
-  ProductionScene,
-  DeliveryScene,
-} from "@/components/illustrations/ProcessScenes";
+import { PROCESS } from "@/lib/process";
+import { STACK_GROUPS } from "@/lib/techstack";
+import { STATS } from "@/lib/stats";
 import {
   OriginalDesignScene,
   MobileFirstScene,
@@ -39,67 +17,12 @@ import {
   MaintainableScene,
 } from "@/components/illustrations/PrincipleScenes";
 
-const STACK_GROUPS = [
-  {
-    label: "Essentials",
-    logos: [
-      { Logo: HtmlLogo, label: "HTML5" },
-      { Logo: CssLogo, label: "CSS3" },
-      { Logo: JsLogo, label: "JavaScript" },
-      { Logo: ReactLogo, label: "React" },
-      { Logo: AngularLogo, label: "Angular" },
-      { Logo: VueLogo, label: "Vue.js" },
-    ],
-  },
-  {
-    label: "Data Sources",
-    logos: [
-      { Logo: SanityLogo, label: "Sanity" },
-      { Logo: ContentfulLogo, label: "Contentful" },
-      { Logo: StoryblokLogo, label: "Storyblok" },
-    ],
-  },
-  {
-    label: "Build",
-    logos: [
-      { Logo: NextjsLogo, label: "Next.js" },
-      { Logo: ReactLogo, label: "React" },
-      { Logo: NodeLogo, label: "Node.js" },
-    ],
-  },
-  {
-    label: "Deploy & CDN",
-    logos: [
-      { Logo: CloudflareLogo, label: "Cloudflare" },
-      { Logo: VercelLogo, label: "Vercel" },
-      { Logo: NetlifyLogo, label: "Netlify" },
-      { Logo: FirebaseLogo, label: "Firebase" },
-      { Logo: AwsLogo, label: "AWS" },
-    ],
-  },
-];
-
-const PROCESS = [
-  { Icon: DiscoveryScene, title: "Keşif", desc: "İhtiyacını, hedeflerini ve kullanıcılarını birlikte netleştiriyoruz." },
-  { Icon: DesignScene, title: "Tasarım", desc: "Markana uygun, sade ve kullanılabilir bir arayüz kuruyoruz." },
-  { Icon: ProductionScene, title: "Üretim", desc: "Sürdürülebilir, test edilmiş ve temiz kodla ürünü hayata geçiriyoruz." },
-  { Icon: DeliveryScene, title: "Teslim", desc: "Yayına alıyor, sonrasında da yanında olmaya devam ediyoruz." },
-];
-
 const PRINCIPLES = [
   { Icon: OriginalDesignScene, title: "Özgün tasarım" },
   { Icon: MobileFirstScene, title: "Mobile-first yaklaşım" },
   { Icon: FastDeliveryScene, title: "Hızlı teslimat" },
   { Icon: AestheticScene, title: "Estetik disiplin" },
   { Icon: MaintainableScene, title: "Bakımı kolay çözümler" },
-];
-
-const TECH_COUNT = STACK_GROUPS.reduce((sum, group) => sum + group.logos.length, 0);
-
-const STATS = [
-  { value: REFERENCES.length, suffix: "+", label: "Teslim Edilen Proje" },
-  { value: SERVICES.length, label: "Hizmet Alanı" },
-  { value: TECH_COUNT, suffix: "+", label: "Kullanılan Teknoloji" },
 ];
 
 export default function Home() {

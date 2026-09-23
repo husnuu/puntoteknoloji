@@ -1,6 +1,6 @@
 .wrap {
   padding-top: 4.5rem;
-  padding-bottom: 6rem;
+  padding-bottom: 1rem;
   text-align: center;
 }
 
@@ -19,4 +19,60 @@
 .lead {
   max-width: 30rem;
   margin: 0 auto 2.5rem;
+}
+
+.sectionHeading {
+  text-align: center;
+  max-width: 38rem;
+  margin: 0 auto 3rem;
+}
+
+.sectionHeading h2 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  margin-bottom: 0.75rem;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.step {
+  text-align: center;
+  padding: 1.75rem 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-border);
+}
+
+.stepNumber {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background-color: var(--c-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-lora), serif;
+  font-weight: 700;
+}
+
+.step h3 {
+  font-size: 1.02rem;
+  margin-bottom: 0.4rem;
+}
+
+.step p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .stepsGrid {
+    grid-template-columns: 1fr;
+  }
 }
