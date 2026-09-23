@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
+import Reveal from "@/components/Reveal";
 import { SearchIcon, CodeIcon, RocketIcon } from "@/components/illustrations/LineIcons";
 import { REFERENCES, getReferenceBySlug } from "@/lib/references";
 
@@ -63,48 +64,50 @@ export default async function ReferenceDetailPage({
       </section>
 
       <section className="container">
-        <div className={styles.imageWrap}>
+        <Reveal className={styles.imageWrap}>
           <reference.Scene className={styles.image} />
-        </div>
+        </Reveal>
 
         <div className={styles.layout}>
           <div>
             <div className={styles.narrative}>
-              <div className={styles.narrativeItem}>
+              <Reveal className={styles.narrativeItem}>
                 <span className={styles.narrativeIcon}><SearchIcon /></span>
                 <div>
                   <h2>Zorluk</h2>
                   <p>{reference.challenge}</p>
                 </div>
-              </div>
-              <div className={styles.narrativeItem}>
+              </Reveal>
+              <Reveal className={styles.narrativeItem} delay={80}>
                 <span className={styles.narrativeIcon}><CodeIcon /></span>
                 <div>
                   <h2>Çözüm</h2>
                   <p>{reference.solution}</p>
                 </div>
-              </div>
-              <div className={styles.narrativeItem}>
+              </Reveal>
+              <Reveal className={styles.narrativeItem} delay={160}>
                 <span className={styles.narrativeIcon}><RocketIcon /></span>
                 <div>
                   <h2>Sonuç</h2>
                   <p>{reference.outcome}</p>
                 </div>
-              </div>
+              </Reveal>
             </div>
 
             <h2 className={styles.highlightsTitle}>Öne Çıkan Özellikler</h2>
-            <ul className={styles.highlightGrid}>
-              {reference.highlights.map((h) => (
-                <li key={h}>
-                  <span className={styles.checkIcon}>✓</span>
-                  {h}
-                </li>
-              ))}
-            </ul>
+            <Reveal>
+              <ul className={styles.highlightGrid}>
+                {reference.highlights.map((h) => (
+                  <li key={h}>
+                    <span className={styles.checkIcon}>✓</span>
+                    {h}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
           </div>
 
-          <aside className={styles.sidebar}>
+          <Reveal delay={120} className={styles.sidebar}>
             <div className={styles.infoCard}>
               <h3>Proje Bilgileri</h3>
               <div className={styles.infoList}>
@@ -141,17 +144,19 @@ export default async function ReferenceDetailPage({
               <p>Böyle bir projeniz mi var?</p>
               <Link href="/proje-baslat" className="btnPrimary">Projeye Başla</Link>
             </div>
-          </aside>
+          </Reveal>
         </div>
       </section>
 
       <section className="container section">
         <h2>Diğer Projeler</h2>
         <div className={styles.otherProjects}>
-          {otherReferences.map((r) => (
-            <Link key={r.slug} href={`/referanslar/${r.slug}`} className={styles.otherProjectCard}>
-              {r.title}
-            </Link>
+          {otherReferences.map((r, i) => (
+            <Reveal key={r.slug} delay={i * 60}>
+              <Link href={`/referanslar/${r.slug}`} className={styles.otherProjectCard}>
+                {r.title}
+              </Link>
+            </Reveal>
           ))}
         </div>
 

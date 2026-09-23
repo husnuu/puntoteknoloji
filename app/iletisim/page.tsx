@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import styles from "./page.module.css";
+import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import { ContactIllustration } from "@/components/illustrations/AboutIllustrations";
 import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_HREF, INSTAGRAM_URL, INSTAGRAM_LABEL, COMPANY } from "@/lib/contact";
@@ -12,16 +13,18 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <section className={`container ${styles.wrap}`}>
-      <div className={styles.header}>
+      <Reveal className={styles.header}>
         <span className="eyebrow">İletişim</span>
         <h1>İletişim</h1>
         <p>Sorular, iş birlikleri veya başka bir şey — bize mesaj gönderin.</p>
-      </div>
+      </Reveal>
 
       <div className={styles.grid}>
-        <ContactForm />
+        <Reveal>
+          <ContactForm />
+        </Reveal>
 
-        <div>
+        <Reveal delay={100}>
           <ContactIllustration className={styles.illustration} />
           <div className={styles.infoList}>
             <div className={styles.infoItem}>
@@ -49,7 +52,7 @@ export default function ContactPage() {
               <p className={styles.addressLine}>{COMPANY.location}</p>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./page.module.css";
+import Reveal from "@/components/Reveal";
 import { FAQ } from "@/lib/faq";
 
 export const metadata: Metadata = {
@@ -11,21 +12,23 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <section className="container section">
-      <div className={styles.intro}>
+      <Reveal className={styles.intro}>
         <span className="eyebrow">SSS</span>
         <h1>Sıkça Sorulan Sorular</h1>
         <p>Süreç, fiyatlandırma ve destek hakkında en çok merak edilenler.</p>
-      </div>
+      </Reveal>
 
       <div className={styles.list}>
-        {FAQ.map((item) => (
-          <details key={item.q} className={styles.item}>
-            <summary>
-              {item.q}
-              <span className={styles.marker}>+</span>
-            </summary>
-            <p>{item.a}</p>
-          </details>
+        {FAQ.map((item, i) => (
+          <Reveal key={item.q} delay={Math.min(i * 40, 320)}>
+            <details className={styles.item}>
+              <summary>
+                {item.q}
+                <span className={styles.marker}>+</span>
+              </summary>
+              <p>{item.a}</p>
+            </details>
+          </Reveal>
         ))}
       </div>
 

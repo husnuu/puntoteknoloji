@@ -6,7 +6,7 @@ import Turnstile from "./Turnstile";
 import { CONTACT_EMAIL } from "@/lib/contact";
 
 const HELP_OPTIONS = ["Web Sitesi", "Mobil Uygulama", "Özel Yazılım", "E-Ticaret", "Diğer"];
-const BUDGET_OPTIONS = ["Belirtmek istemiyorum", "£1.000 – £3.000", "£3.000 – £7.000", "£7.000 – £15.000", "£15.000+"];
+const BUDGET_OPTIONS = ["Belirtmek istemiyorum", "₺25.000 – ₺75.000", "₺75.000 – ₺150.000", "₺150.000 – ₺300.000", "₺300.000+"];
 const TIMELINE_OPTIONS = ["Esnek", "1 ay içinde", "1–3 ay içinde", "3+ ay"];
 
 const CHECKLIST = [

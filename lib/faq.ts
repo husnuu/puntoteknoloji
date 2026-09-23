@@ -31,4 +31,16 @@ export const FAQ = [
     q: "Projeye nasıl başlayabilirim?",
     a: "Proje Başlat sayfasından ihtiyacınızı kısaca anlatmanız yeterli. 24 saat içinde size dönüş yapıp bir sonraki adımı birlikte planlıyoruz.",
   },
+  {
+    q: "Sözleşme imzalıyor musunuz?",
+    a: "Evet. Kapsam netleştikten sonra projenin kapsamını, teslim tarihlerini ve ödeme planını içeren bir sözleşme hazırlarız; her iki taraf için de netlik sağlar.",
+  },
+  {
+    q: "Uzaktan mı çalışıyorsunuz, yüz yüze görüşme mümkün mü?",
+    a: "İstanbul merkezliyiz ve çoğu proje uzaktan yürütülür; görüntülü görüşmelerle düzenli olarak bilgi paylaşırız. İstenirse İstanbul içinde yüz yüze görüşme de planlayabiliriz.",
+  },
+  {
+    q: "Projeyi teslim aldıktan sonra kaynak koduna sahip oluyor muyum?",
+    a: "Evet. Proje tamamlanıp ödeme yapıldıktan sonra kaynak kodun tam sahipliği size ait olur; başka bir ekiple de devam edebilirsiniz.",
+  },
 ];

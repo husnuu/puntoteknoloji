@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
+import Reveal from "@/components/Reveal";
 import TechPill from "@/components/TechPill";
 import { SERVICES, getServiceBySlug } from "@/lib/services";
 
@@ -55,29 +56,31 @@ export default async function ServiceDetailPage({
       </section>
 
       <section className="container section">
-        <div className={styles.body}>
+        <Reveal className={styles.body}>
           {service.paragraphs.slice(1).map((p) => (
             <p key={p}>{p}</p>
           ))}
-        </div>
+        </Reveal>
 
         <h2 className={styles.sectionTitle}>Neler Sunuyoruz</h2>
-        <ul className={styles.featureGrid}>
-          {service.features.map((f) => (
-            <li key={f}>
+        <div className={styles.featureGrid}>
+          {service.features.map((f, i) => (
+            <Reveal key={f} delay={i * 50} className={styles.featureItem}>
               <span className={styles.checkIcon}>✓</span>
               {f}
-            </li>
+            </Reveal>
           ))}
-        </ul>
+        </div>
       </section>
 
       <section className={`section`} style={{ backgroundColor: "var(--c-secondary)" }}>
         <div className="container">
           <h2 className={styles.sectionTitle}>Kullandığımız Teknolojiler</h2>
           <div className={styles.techRow}>
-            {service.technologies.map((t) => (
-              <TechPill key={t.label} label={t.label} Logo={t.Logo} />
+            {service.technologies.map((t, i) => (
+              <Reveal key={t.label} delay={i * 50}>
+                <TechPill label={t.label} Logo={t.Logo} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -86,10 +89,12 @@ export default async function ServiceDetailPage({
       <section className="container section">
         <h2 className={styles.sectionTitle}>Diğer Hizmetler</h2>
         <div className={styles.otherServices}>
-          {otherServices.map((s) => (
-            <Link key={s.slug} href={`/hizmetler/${s.slug}`} className={styles.otherServiceCard}>
-              {s.title}
-            </Link>
+          {otherServices.map((s, i) => (
+            <Reveal key={s.slug} delay={i * 60}>
+              <Link href={`/hizmetler/${s.slug}`} className={styles.otherServiceCard}>
+                {s.title}
+              </Link>
+            </Reveal>
           ))}
         </div>
 
