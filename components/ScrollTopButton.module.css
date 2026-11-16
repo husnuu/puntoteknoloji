@@ -1,7 +1,8 @@
 .button {
   position: fixed;
-  right: 1.5rem;
-  bottom: 1.5rem;
+  /* Stacked above, and centred on, the 58px WhatsApp button */
+  right: calc(1.5rem + 6px);
+  bottom: calc(1.5rem + 58px + 0.85rem);
   z-index: 60;
   width: 46px;
   height: 46px;
@@ -19,4 +20,11 @@
 .button:hover {
   background-color: var(--c-primary-hover);
   transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .button {
+    right: calc(1rem + 4px);
+    bottom: calc(1rem + 54px + 0.75rem);
+  }
 }

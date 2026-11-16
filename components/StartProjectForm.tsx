@@ -1,13 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import styles from "./StartProjectForm.module.css";
 import Turnstile from "./Turnstile";
-import { CONTACT_EMAIL } from "@/lib/contact";
-
-const HELP_OPTIONS = ["Web Sitesi", "Mobil Uygulama", "Özel Yazılım", "E-Ticaret", "Diğer"];
-const BUDGET_OPTIONS = ["Belirtmek istemiyorum", "₺25.000 – ₺75.000", "₺75.000 – ₺150.000", "₺150.000 – ₺300.000", "₺300.000+"];
-const TIMELINE_OPTIONS = ["Esnek", "1 ay içinde", "1–3 ay içinde", "3+ ay"];
+import { FormStatus, Honeypot } from "./FormExtras";
+import { BUDGET_OPTIONS, HELP_OPTIONS, LIMITS, TIMELINE_OPTIONS, submitForm, type FormResult } from "@/lib/forms";
 
 const CHECKLIST = [
   "Taahhüt yok",
@@ -22,31 +19,50 @@ export default function StartProjectForm() {
   const [details, setDetails] = useState("");
   const [budget, setBudget] = useState("");
   const [timeline, setTimeline] = useState("");
+  const [result, setResult] = useState<FormResult | null>(null);
+  const [pending, startTransition] = useTransition();
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const subject = encodeURIComponent(`Yeni proje talebi — ${name || "İsimsiz"}`);
-    const body = encodeURIComponent(
-      `İsim: ${name}\nE-posta: ${email}\nYardım konusu: ${helpType}\nBütçe: ${budget}\nZaman çizelgesi: ${timeline}\n\nProje detayı:\n${details}`
-    );
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    const data = new FormData(e.currentTarget);
+    setResult(null);
+    startTransition(async () => {
+      const res = await submitForm(data, {
+        subject: `Yeni proje talebi — ${name.trim()}${helpType ? ` (${helpType})` : ""}`,
+        fields: {
+          Konu: helpType,
+          Bütçe: budget,
+          Zaman: timeline,
+          "Proje detayı": details,
+        },
+      });
+      setResult(res);
+      if (res.ok) {
+        setName("");
+        setEmail("");
+        setHelpType("");
+        setDetails("");
+        setBudget("");
+        setTimeline("");
+      }
+    });
   }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <label className={styles.field}>
         <span>Adınız *</span>
-        <input type="text" required value={name} onChange={(e) => setName(e.target.value)} placeholder="Adınız Soyadınız" />
+        <input type="text" name="name" required maxLength={LIMITS.name} autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Adınız Soyadınız" />
       </label>
 
       <label className={styles.field}>
         <span>E-postanız *</span>
-        <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="siz@sirket.com" />
+        <input type="email" name="email" required maxLength={LIMITS.email} autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="siz@sirket.com" />
       </label>
 
       <label className={styles.field}>
         <span>Ne konuda yardıma ihtiyacınız var?</span>
-        <select value={helpType} onChange={(e) => setHelpType(e.target.value)}>
+        <select name="helpType" value={helpType} onChange={(e) => setHelpType(e.target.value)}>
           <option value="">Seçiniz</option>
           {HELP_OPTIONS.map((o) => (
             <option key={o} value={o}>{o}</option>
@@ -57,12 +73,12 @@ export default function StartProjectForm() {
       <label className={styles.field}>
         <span>Ne inşa etmeye çalışıyorsunuz?</span>
         <span className={styles.helperText}>Ne yapmalı? Kimler kullanacak? Örnek veya bağlantılar var mı?</span>
-        <textarea rows={5} value={details} onChange={(e) => setDetails(e.target.value)} placeholder="Projenizi anlatın..." />
+        <textarea name="details" rows={5} maxLength={LIMITS.message} value={details} onChange={(e) => setDetails(e.target.value)} placeholder="Projenizi anlatın..." />
       </label>
 
       <label className={styles.field}>
         <span>Bütçe (opsiyonel)</span>
-        <select value={budget} onChange={(e) => setBudget(e.target.value)}>
+        <select name="budget" value={budget} onChange={(e) => setBudget(e.target.value)}>
           <option value="">Seçiniz</option>
           {BUDGET_OPTIONS.map((o) => (
             <option key={o} value={o}>{o}</option>
@@ -72,7 +88,7 @@ export default function StartProjectForm() {
 
       <label className={styles.field}>
         <span>Ne zaman ihtiyacınız var?</span>
-        <select value={timeline} onChange={(e) => setTimeline(e.target.value)}>
+        <select name="timeline" value={timeline} onChange={(e) => setTimeline(e.target.value)}>
           <option value="">Seçiniz</option>
           {TIMELINE_OPTIONS.map((o) => (
             <option key={o} value={o}>{o}</option>
@@ -80,9 +96,17 @@ export default function StartProjectForm() {
         </select>
       </label>
 
+      <Honeypot />
       <Turnstile />
 
-      <button type="submit" className="btnPrimary">Proje Detaylarını Gönder</button>
+      <button type="submit" className="btnPrimary" disabled={pending}>
+        {pending ? "Gönderiliyor…" : "Proje Detaylarını Gönder"}
+      </button>
+
+      <FormStatus
+        result={result}
+        successText="Teşekkürler! Proje talebiniz bize ulaştı, 24 saat içinde size dönüş yapacağız."
+      />
 
       <ul className={styles.checklist}>
         {CHECKLIST.map((item) => (

@@ -44,6 +44,13 @@ export default function CookiePolicyPage() {
             kullanabiliriz; bu, gerektiğinde bir doğrulama widget&apos;ı
             yükler.
           </li>
+          <li>
+            <strong>Görüşme planlama:</strong> İletişim sayfamızdaki
+            randevu takvimi Calendly tarafından sağlanır. Bu takvim
+            yüklendiğinde Calendly, hizmetini sunmak için kendi çerezlerini
+            kullanabilir; ayrıntılar için Calendly&apos;nin gizlilik
+            politikasına bakabilirsiniz.
+          </li>
         </ul>
         <p>
           Şu anda reklam veya izleme amaçlı çerez kullanmıyoruz. İlerleyen

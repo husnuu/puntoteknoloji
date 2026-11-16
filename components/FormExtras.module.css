@@ -1,0 +1,64 @@
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.status {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.statusIcon {
+  flex-shrink: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.success {
+  color: #146c3b;
+  background-color: #e8f7ee;
+  border: 1px solid #bfe8cf;
+}
+
+.success .statusIcon {
+  background-color: #1f9d55;
+}
+
+.error {
+  color: #9b1c1c;
+  background-color: #fdecec;
+  border: 1px solid #f6c7c7;
+}
+
+.error .statusIcon {
+  background-color: #d64545;
+}
+
+:global(body.dark) .success {
+  color: #8fe3b0;
+  background-color: #0f2a1b;
+  border-color: #1d4a31;
+}
+
+:global(body.dark) .error {
+  color: #f5a3a3;
+  background-color: #2e1414;
+  border-color: #552323;
+}

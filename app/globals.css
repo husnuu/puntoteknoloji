@@ -158,6 +158,13 @@ button {
   transform: translateY(-1px);
 }
 
+.btnPrimary:disabled {
+  background-color: var(--c-button-disabled-bg);
+  color: var(--c-button-disabled-text);
+  cursor: progress;
+  transform: none;
+}
+
 .btnGhost {
   display: inline-flex;
   align-items: center;

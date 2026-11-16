@@ -45,7 +45,8 @@ export default function PrivacyPolicyPage() {
         <h2>Bilgi Paylaşımı</h2>
         <p>
           Kişisel verileriniz yalnızca formu e-posta yoluyla iletmemizi sağlayan
-          hizmet sağlayıcılar (örneğin e-posta istemciniz) ile paylaşılır. Bu
+          hizmet sağlayıcılar (form iletim hizmeti Web3Forms ve e-posta
+          sağlayıcımız Google Gmail) ile paylaşılır. Bu
           sağlayıcılar dışında verileriniz üçüncü taraflarla paylaşılmaz.
         </p>
 

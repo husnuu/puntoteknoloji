@@ -1,0 +1,121 @@
+.button {
+  --wa-size: 58px;
+  --wa-green: #25d366;
+  --wa-green-dark: #1ebe5b;
+
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: waEnter 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) 0.6s both;
+}
+
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--wa-size);
+  height: var(--wa-size);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: linear-gradient(145deg, #2fe074, var(--wa-green) 55%, var(--wa-green-dark));
+  box-shadow:
+    0 10px 24px rgba(37, 211, 102, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Soft pulse ring */
+.icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: var(--wa-green);
+  z-index: -1;
+  animation: waPulse 2.6s ease-out infinite;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--c-text);
+  background-color: var(--c-background);
+  border: 1px solid var(--c-border);
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(20, 20, 30, 0.12);
+  opacity: 0;
+  transform: translateX(8px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover .icon,
+.button:focus-visible .icon {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow:
+    0 14px 30px rgba(37, 211, 102, 0.45),
+    0 3px 8px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.button:hover .label,
+.button:focus-visible .label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.button:focus-visible {
+  outline: none;
+}
+
+.button:focus-visible .icon {
+  outline: 3px solid var(--c-primary);
+  outline-offset: 3px;
+}
+
+@keyframes waPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  70%,
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+@keyframes waEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Touch screens have no hover, so the label is never shown there */
+@media (hover: none) {
+  .label {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    --wa-size: 54px;
+    right: 1rem;
+    bottom: 1rem;
+  }
+}

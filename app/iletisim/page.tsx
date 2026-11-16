@@ -3,7 +3,18 @@ import styles from "./page.module.css";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import { ContactIllustration } from "@/components/illustrations/AboutIllustrations";
-import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_HREF, INSTAGRAM_URL, INSTAGRAM_LABEL, COMPANY } from "@/lib/contact";
+import CalendlyEmbed from "@/components/CalendlyEmbed";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  CONTACT_PHONE_HREF,
+  INSTAGRAM_URL,
+  INSTAGRAM_LABEL,
+  WHATSAPP_URL,
+  WHATSAPP_LABEL,
+  CALENDLY_URL,
+  COMPANY,
+} from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "İletişim — Punto Teknoloji",
@@ -40,6 +51,12 @@ export default function ContactPage() {
               </span>
             </div>
             <div className={styles.infoItem}>
+              <span className={styles.infoLabel}>WhatsApp</span>
+              <span className={styles.infoValue}>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">{WHATSAPP_LABEL}</a>
+              </span>
+            </div>
+            <div className={styles.infoItem}>
               <span className={styles.infoLabel}>Instagram</span>
               <span className={styles.infoValue}>
                 <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">{INSTAGRAM_LABEL}</a>
@@ -52,6 +69,17 @@ export default function ContactPage() {
               <p className={styles.addressLine}>{COMPANY.location}</p>
             </div>
           </div>
+        </Reveal>
+      </div>
+
+      <div id="gorusme" className={styles.meeting}>
+        <Reveal className={styles.meetingHeader}>
+          <span className="eyebrow">Görüşme Planla</span>
+          <h2>30 dakikalık bir görüşme ayarlayın</h2>
+          <p>Projenizi konuşmak için takvimden size uygun bir gün ve saati seçin.</p>
+        </Reveal>
+        <Reveal delay={80}>
+          <CalendlyEmbed url={CALENDLY_URL} />
         </Reveal>
       </div>
     </section>
